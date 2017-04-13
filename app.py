@@ -18,6 +18,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
@@ -33,18 +34,20 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
+
 def processRequest(req):
-    if req.get("result").get("action") != "AskStock":
+    if req.get("result").get("action") != "askstock":
         return {}
-    baseurl = "https://query.yahooapis.com/v1/public/yql?"
+    baseurl = "https://google-stocks.herokuapp.com/?code"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json&env=store://datatables.org/alltableswithkeys"
+    yql_url = baseurl + urlencode({'BKK:': yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
     return res
+
 
 def makeYqlQuery(req):
     result = req.get("result")
@@ -53,23 +56,18 @@ def makeYqlQuery(req):
     if city is None:
         return None
 
-    return 'select * from yahoo.finance.quotes where symbol = "' + city + '"'
+    return city
+
 
 def makeWebhookResult(data):
-    query = data.get('query')
-    if query is None:
+
+    symbol = data[0].get('t')
+    price = data[0].get('l')
+    if (symbol is None) or (price is None):
         return {}
 
-    result = query.get('results')
-    if result is None:
-        return {}
-    
-    item = result.get('symbol')
-    if (item is None):
-        return {}
-
-    speech = "Stock: " + item
-
+    speech = "Stock :" + symbol + " Price: " + price
+    speech = "hello"
     print("Response:")
     print(speech)
 
@@ -80,6 +78,7 @@ def makeWebhookResult(data):
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
+
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
