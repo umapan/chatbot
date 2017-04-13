@@ -67,7 +67,7 @@ def makeWebhookResult(data):
         return {}
 
     speech = "Stock :" + symbol + " Price: " + price
-
+    speech = "Hello"
     print("Response:")
     print(speech)
 
