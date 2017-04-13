@@ -42,7 +42,7 @@ def processRequest(req):
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({'q': yql_query}) + urlencode("&format=json&env=store://datatables.org/alltableswithkeys")
+    yql_url = baseurl + urlencode({'q=': yql_query}) + urlencode("&format=json&env=store://datatables.org/alltableswithkeys")
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
