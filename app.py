@@ -42,7 +42,7 @@ def processRequest(req):
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json&env=store://datatables.org/alltableswithkeys"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
@@ -52,11 +52,11 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    city = parameters.get("geo-city")
+    city = parameters.get("stock_name")
     if city is None:
         return None
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    return "select * from yahoo.finance.quotes where symbol in ('" + city + "')"
 
 
 def makeWebhookResult(data):
@@ -67,25 +67,12 @@ def makeWebhookResult(data):
     result = query.get('results')
     if result is None:
         return {}
-
-    channel = result.get('channel')
-    if channel is None:
+    
+    item = result.get('symbol')
+    if (item is None):
         return {}
 
-    item = channel.get('item')
-    location = channel.get('location')
-    units = channel.get('units')
-    if (location is None) or (item is None) or (units is None):
-        return {}
-
-    condition = item.get('condition')
-    if condition is None:
-        return {}
-
-    # print(json.dumps(item, indent=4))
-
-    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+    speech = "Stock: " + item
 
     print("Response:")
     print(speech)
