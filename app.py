@@ -42,7 +42,7 @@ def processRequest(req):
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({'BKK:': yql_query}) +  "&format=json"
+    yql_url = baseurl + urlencode({'BKK:': yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
@@ -61,8 +61,8 @@ def makeYqlQuery(req):
 
 def makeWebhookResult(data):
 
-    symbol = data.get('t')
-    price = data.get('l')
+    symbol = data[0].get('t')
+    price = data[0].get('l')
     if (symbol is None) or (price is None):
         return {}
 
