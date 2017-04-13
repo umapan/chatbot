@@ -36,8 +36,17 @@ def webhook():
 
 
 def processRequest(req):
-    
-    return "Hello"
+    if req.get("result").get("action") != "askstock":
+        return {}
+    baseurl = "https://google-stocks.herokuapp.com/?code=BKK:"
+    yql_query = makeYqlQuery(req)
+    if yql_query is None:
+        return {}
+    yql_url = baseurl + yql_query + "&format=json"
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    res = makeWebhookResult(data)
+    return yql_url
 
 
 def makeYqlQuery(req):
@@ -52,8 +61,8 @@ def makeYqlQuery(req):
 
 def makeWebhookResult(data):
 
-    symbol = data[0].get('t')
-    price = data[0].get('l')
+    symbol = data.get('t')
+    price = data.get('l')
     if (symbol is None) or (price is None):
         return {}
 
