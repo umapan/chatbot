@@ -36,7 +36,7 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":
+    if req.get("result").get("action") != "askstock":
         return {}
     baseurl = "https://google-stocks.herokuapp.com/?code=BKK:"
     yql_query = makeYqlQuery(req)
@@ -52,7 +52,7 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    city = parameters.get("geo-city")
+    city = parameters.get("stock_name")
     if city is None:
         return None
 
