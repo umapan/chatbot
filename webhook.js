@@ -84,21 +84,22 @@ app.post('/ai', (req, res) => {
   console.log('*** Webhook for api.ai query ***');
   console.log(req.body.result);
 
-  if (req.body.result.action === 'askstock') {
+  if (req.body.result.action === 'AskStock') {
     console.log('*** weather ***');
-    var stock_name = req.body.result.parameters['stock_name'];
+    var stock_name = req.body.result.parameters['stockname'];
     var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
 
-    request.get(restUrl, (err, response, body) => {
-      if (!err && response.statusCode == 200) {
+    request({url: restUrl,json: true }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
         //var json = JSON.parse(body[0]);
 
-        var msg = 'Stock ID: ' + body[0].id + ' Name: ' + body[0].t;
+        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l;
         return res.json({
           speech: msg,
           displayText: msg,
           source: 'stock_name'
         });
+        console.log(body);
       } else {
         var errorMessage = 'I failed to look up stock name.';
         return res.status(400).json({
