@@ -38,11 +38,11 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
-    baseurl = "https://google-stocks.herokuapp.com/?"
+    baseurl = "https://google-stocks.herokuapp.com/?code=BKK:"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({'code=BKK:': yql_query}) + "&format=json"
+    yql_url = baseurl + urlencode(yql_query) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
