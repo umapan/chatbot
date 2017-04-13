@@ -18,7 +18,6 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
@@ -34,7 +33,6 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
-
 def processRequest(req):
     if req.get("result").get("action") != "AskStock":
         return {}
@@ -42,12 +40,11 @@ def processRequest(req):
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({'q=': yql_query}) + urlencode("&format=json&env=store://datatables.org/alltableswithkeys")
+    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json&env=store://datatables.org/alltableswithkeys"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
     return res
-
 
 def makeYqlQuery(req):
     result = req.get("result")
@@ -57,7 +54,6 @@ def makeYqlQuery(req):
         return None
 
     return 'select * from yahoo.finance.quotes where symbol = "' + city + '"'
-
 
 def makeWebhookResult(data):
     query = data.get('query')
@@ -84,7 +80,6 @@ def makeWebhookResult(data):
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
-
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
