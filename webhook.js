@@ -88,14 +88,8 @@ app.post('/ai', (req, res) => {
   if (req.body.result.action === 'AskStock') {
     var stock_name = req.body.result.parameters['stockname'];
     if(Stock_info(stock_name)){ Stock_info(stock_name); }
-    else if(DW_info(stock_name)){ DW_info(stock_name) }
-    else { 
-        return res.json({
-          speech: 'No',
-          displayText: 'No',
-          source: 'stock_name'
-        });
-    }
+    if(DW_info(stock_name)){ DW_info(stock_name); }
+    
   }
 });
 
