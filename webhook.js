@@ -88,14 +88,8 @@ app.post('/ai', (req, res) => {
   if (req.body.result.action === 'AskStock') {
     console.log('*** weather ***');
     var stock_name = req.body.result.parameters['stockname'];
-    DW_info(stock_name);
-  }
-
-});
-
-function DW_info(stock_name){
-  var restUrl = 'http://49.231.7.202:8080/axis2/services/DWService/getDWCalculatorByFormat?secSym='+stock_name+'&format=json';
-  var cun = 0; var msg = ''; var myJSONObject = [];
+    var restUrl = 'http://49.231.7.202:8080/axis2/services/DWService/getDWCalculatorByFormat?secSym='+stock_name+'&format=json';
+    var cun = 0; var msg = ''; var myJSONObject = [];
     request({url: restUrl,json: true }, function (error, response, body) {
         if (!error && response.statusCode == 200 && body[0]) {
           parseString(body, function (err, result) {
@@ -112,4 +106,7 @@ function DW_info(stock_name){
           });
         }
     })
-}
+  }
+
+});
+
