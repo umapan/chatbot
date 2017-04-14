@@ -87,47 +87,16 @@ app.post('/ai', (req, res) => {
 
   if (req.body.result.action === 'AskStock') {
     var stock_name = req.body.result.parameters['stockname'];
+    
     var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
     request({url: restUrl,json: true }, function (error, response, body) {
       if (!error && response.statusCode == 200 && body[0]) {
         msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l;
-        return res.json({
-            speech: msg,
-            displayText: msg,
-            source: 'stock_name'
-        });
+        return res.json({speech: msg,displayText: msg,source: 'stock_name'});
       } else {
         var errorMessage = 'I failed to look up stock name.';
-        return res.status(400).json({
-          status: {
-            code: 400,
-            errorType: errorMessage
-          }
-        });
+        return res.status(400).json({status: {code: 400,errorType: errorMessage}});
       }
     })
   }
 });
-
-function Stock_info(stock_name){
-  var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
-    request({url: restUrl,json: true }, function (error, response, body) {
-      if (!error && response.statusCode == 200 && body[0]) {
-        msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l;
-        return res.json({
-            speech: msg,
-            displayText: msg,
-            source: 'stock_name'
-        });
-      } else {
-        var errorMessage = 'I failed to look up stock name.';
-        return res.status(400).json({
-          status: {
-            code: 400,
-            errorType: errorMessage
-          }
-        });
-      }
-    })
-}
-
