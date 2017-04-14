@@ -87,23 +87,33 @@ app.post('/ai', (req, res) => {
   if (req.body.result.action === 'AskStock') {
     console.log('*** weather ***');
     var stock_name = req.body.result.parameters['stockname'];
-    Stock_Info(stock_name)
-
+    DW_info(stock_name)
   }
 
 });
 
-function Stock_Info(stock_name){
-  var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
+function DW_info(stock_name){
+  var restUrl = 'http://49.231.7.202:8080/axis2/services/DWService/getDWCalculatorByFormat?secSym='+stock_name+'&format=json';
+  var cun = 0; var msg = ''; var myJSONObject = [];
     request({url: restUrl,json: true }, function (error, response, body) {
-      if (!error && response.statusCode == 200 && body[0]) {
-        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l;
-        return res.json({
-            speech: msg,
-            displayText: msg,
-            source: 'stock_name'
-        });
-      } else {
+        if (!error && response.statusCode == 200 && body[0]) {
+          parseString(body, function (err, result) {
+            myJSONObject.push(result);
+            var json = JSON.parse(myJSONObject[0]['ns:getDWCalculatorByFormatResponse']['ns:return']);
+              
+            var nn = json.totalRecord;
+            for (cun = 0;cun<nn;cun++){
+              if(json['resultSet'][cun].IssuerSym == 'BLS'){
+                msg = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
+              }
+            }
+            return res.json({
+              speech: msg,
+              displayText: msg,
+              source: 'stock_name'
+            });
+          });
+        } else {
         var errorMessage = 'I failed to look up stock name.';
         return res.status(400).json({
           status: {
