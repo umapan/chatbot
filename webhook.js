@@ -95,14 +95,13 @@ app.post('/ai', (req, res) => {
           parseString(body, function (err, result) {
             myJSONObject.push(result);
             var json = JSON.parse(myJSONObject[0]['ns:getDWCalculatorByFormatResponse']['ns:return']);
-              
             var nn = json.totalRecord;
             for (cun = 0;cun<nn;cun++){
               if(json['resultSet'][cun].IssuerSym == 'BLS'){
-                myJSONObject[cun] = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
+                msg = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
               }
             }
-            return res.json({speech: myJSONObject[0],displayText: myJSONObject[0],source: 'stock_name'});
+            return res.json({speech: msg,displayText: msg,source: 'stock_name'});
           });
         }
     })
