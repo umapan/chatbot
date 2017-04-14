@@ -6,7 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const apiai = require('apiai');
-const parseString = require('xml2js').parseString;
+const xml2js = require('xml2js'), parseString = xml2js.parseString;
 
 const app = express();
 app.use(bodyParser.json());
@@ -62,9 +62,11 @@ function sendMessage(event) {
         message: {text: aiText}
       }
     }, (error, response) => {
-      if (error) { console.log('Error sending message: ', error); }
-      else if (response.body.error) { console.log('Error: ', response.body.error); }
-      
+      if (error) {
+          console.log('Error sending message: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
     });
   });
 
@@ -83,8 +85,7 @@ app.post('/ai', (req, res) => {
   if (req.body.result.action === 'AskStock') {
     console.log('*** weather ***');
     var stock_name = req.body.result.parameters['stockname'];
-    if(Stock_Info(stock_name,req, res)) Stock_Info(stock_name);
-    else if(DW_info(stock_name,req, res)) DW_info(stock_name);
+    if(Stock_Info(stock_name,req, res)) { Stock_Info(stock_name); }
   }
 
 });
@@ -116,7 +117,7 @@ function DW_info(stock_name,req, res){
                 myJSONObject[cun] = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
               }
             }
-            return res.json({speech: myJSONObject,displayText: myJSONObject,source: 'stock_name'});
+            return res.json({speech: myJSONObject[0],displayText: myJSONObject[0],source: 'stock_name'});
           });
         }
     })
