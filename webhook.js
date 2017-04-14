@@ -104,14 +104,10 @@ function DW_info(stock_name){
             var nn = json.totalRecord;
             for (cun = 0;cun<nn;cun++){
               if(json['resultSet'][cun].IssuerSym == 'BLS'){
-                msg = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
+                myJSONObject[cun] = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
               }
             }
-            return res.json({
-              speech: msg,
-              displayText: msg,
-              source: 'stock_name'
-            });
+            return res.json({speech: myJSONObject,displayText: myJSONObject,source: 'stock_name'});
           });
         }
     })
