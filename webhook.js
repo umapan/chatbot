@@ -87,7 +87,7 @@ app.post('/ai', (req, res) => {
   if (req.body.result.action === 'AskStock') {
     console.log('*** weather ***');
     var stock_name = req.body.result.parameters['stockname'];
-    DW_info(stock_name)
+    DW_info(stock_name);
   }
 
 });
@@ -113,14 +113,6 @@ function DW_info(stock_name){
               source: 'stock_name'
             });
           });
-        } else {
-        var errorMessage = 'I failed to look up stock name.';
-        return res.status(400).json({
-          status: {
-            code: 400,
-            errorType: errorMessage
-          }
-        });
-      }
+        }
     })
 }
