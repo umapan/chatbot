@@ -85,10 +85,21 @@ app.post('/ai', (req, res) => {
   console.log(req.body.result);
 
   if (req.body.result.action === 'AskStock') {
-    console.log('*** weather ***');
     var stock_name = req.body.result.parameters['stockname'];
-    var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
+    if(Stock_info(stock_name)){ Stock_info(stock_name); }
+    else if(){  }
+    else { 
+        return res.json({
+          speech: 'No',
+          displayText: 'No',
+          source: 'stock_name'
+        });
+    }
+  }
+});
 
+function Stock_info(stock_name){
+  var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
     request({url: restUrl,json: true }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         //var json = JSON.parse(body[0]);
@@ -110,6 +121,38 @@ app.post('/ai', (req, res) => {
         });
       }
     })
-  }
-
-});
+}
+    
+function DW_info(stock_name){
+  var restUrl = 'http://49.231.7.202:8080/axis2/services/DWService/getDWCalculatorByFormat?secSym='+stock_name+'&format=json';
+  var cun = 0; var msg = '';
+    request({url: restUrl,json: true }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          parseString(body, function (err, result) {
+            myJSONObject.push(result);
+            var json = JSON.parse(myJSONObject[0]['ns:getDWCalculatorByFormatResponse']['ns:return']);
+              
+            var nn = json.totalRecord;
+            for (cun = 0;cun<nn;cun++){
+              if(json['resultSet'][cun].IssuerSym == 'BLS'){
+                msg = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
+              }
+            }
+            return res.json({
+              speech: msg,
+              displayText: msg,
+              source: 'stock_name'
+            });
+          });
+        } else {
+          msg = 'I failed to look up stock name.';
+          console.log(errorMessage);
+          return res.status(400).json({
+            status: {
+              code: 400,
+              errorType: errorMessage
+            }
+          });
+        }
+      })
+}
