@@ -91,7 +91,7 @@ app.post('/ai', (req, res) => {
     var restUrl = 'http://49.231.7.202:8080/axis2/services/DWService/getDWCalculatorByFormat?secSym='+stock_name+'&format=json';
     var cun = 0; var msg = ''; var myJSONObject = [];
     request({url: restUrl,json: true }, function (error, response, body) {
-        if (!error && response.statusCode == 200 && body[0]) {
+        if (!error && response.statusCode == 200) {
           parseString(body, function (err, result) {
             myJSONObject.push(result);
             var json = JSON.parse(myJSONObject[0]['ns:getDWCalculatorByFormatResponse']['ns:return']);
