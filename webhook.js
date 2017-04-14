@@ -102,7 +102,7 @@ app.post('/ai', (req, res) => {
                 myJSONObject[cun] = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
               }
             }
-            return res.json({speech: myJSONObject,displayText: myJSONObject,source: 'stock_name'});
+            return res.json({speech: myJSONObject[0],displayText: myJSONObject[0],source: 'stock_name'});
           });
         }
     })
