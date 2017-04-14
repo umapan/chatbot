@@ -101,7 +101,7 @@ app.post('/ai', (req, res) => {
                 msg = 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice;
               }
             }
-            return res.json({speech: msg,displayText: msg,source: 'stock_name'});
+            return res.json({speech: "Hello",displayText: "Hello",source: 'stock_name'});
           });
         }
     })
