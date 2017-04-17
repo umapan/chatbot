@@ -115,7 +115,8 @@ app.post('/ai', (req, res) => {
     });
     /*end AskStock*/ 
   }
-  else if (!msg && req.body.result.action == 'AskDW') {
+  
+  if (!msg && req.body.result.action == 'AskDW') {
       console.log('*** DW Symbols ***');
       dwname = req.body.result.parameters['dwname'];   
       var dwUserKey =''; /*เอาค่าที่คนพิมพ์มาด้วย DW PTTO1 or DW PTT01C1705A or DW PTT Call*/
@@ -133,15 +134,13 @@ app.post('/ai', (req, res) => {
                 
               var nn = json.totalRecord;
                        
-                
-                
                 for (cun = 0;cun<nn;cun++){
                   //if(json['resultSet'][cun].IssuerSym == 'BLS'){
-                  
-                    msgDW += 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice + ' ';
+                  msgDW += 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice + ' ';
                    
                   /*แก้ msgDW 
-                  คุณสามารถเลือก DW อ้างอิงหุ้น PTT (underlyingAssetSym) ทั้งหมดได้ที่นี่ โดย DW ชนิด Call: ซื้อเมื่อคาดว่าราคาหุ้น Underlying จะขึ้น และ DW ชนิด Put: ซื้อเมื่อคาดว่าราคาหุ้น Underlying จะลง
+                  คุณสามารถเลือก DW อ้างอิงหุ้น PTT (underlyingAssetSym) ทั้งหมดได้ที่นี่ 
+                  โดย DW ชนิด Call: ซื้อเมื่อคาดว่าราคาหุ้น Underlying จะขึ้น และ DW ชนิด Put: ซื้อเมื่อคาดว่าราคาหุ้น Underlying จะลง
                   (* ข้อมูล ณ 30/03/2560 17.00 น. updDate + updTime)
                   PTT01C1705A(secSym)| ชนิด Call dwType | ราคาปัจจุบัน 1.38 LstPrice บาท | ราคาเสนอซื้อเบื้องต้น 1.30 estIndicativePrice บาท | วันซื้อขายวันสุดท้าย
                   lastTradeDate |  สถานะ DW moneyness 
