@@ -63,7 +63,7 @@ function sendMessage(event) {
       method: 'POST',
       json: {
         recipient: {id: sender},
-        message: z
+        message: {text:aiText}
 
       }
     }, (error, response) => {
