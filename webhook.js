@@ -108,7 +108,7 @@ app.post('/ai', (req, res) => {
         }else if(closing_price){ 
           msg = 'ชื่อหุ้น ' + result[0].t + ' ราคาปิดวันก่อนหน้า อยู่ที่ ' + result[0].pcls_fix + ' บาท ข้อมูล ณ ' + result[0].lt;
         }else {
-          msg = 'ชื่อหุ้น ' + result[0].t;
+          msg = 'อยากรู้อะไรเกี่ยวกับหุ้น' + result[0].t + 'ค่ะ';
         } 
         return res.json({speech: msg,displayText: msg,source: 'stock_name'});
         //return res.json({"text":"ท่านอยากทราบ","quick_reply": {"content_type":"text","title":["ราคาปัจจุบัน","ราคาเปิด","ราคาปิดล่าสุด"],"payload":"LLo"}});
@@ -119,6 +119,79 @@ app.post('/ai', (req, res) => {
       }
     });
     /*end AskStock*/ 
+  } else if (!msg && req.body.result.action == 'AskDW') {
+      console.log('*** DW Symbols ***');
+      dwname = req.body.result.parameters['dwname'];   
+      var dwUserKey =''; /*เอาค่าที่คนพิมพ์มาด้วย DW PTTO1 or DW PTT01C1705A or DW PTT Call*/
+      var cun = 0; var msg = ''; var myJSONObject = []; var msgDW = '';
+      
+      var dwUrl = 'http://49.231.7.202:8080/axis2/services/DWService/getDWCalculatorByFormat?secSym='+dwname+'&format=json';
+
+      request({url: dwUrl,json: true }, function (error, response, body) {
+          if (!error && response.statusCode == 200 && body[0]) {
+
+              xml2js.parseString(body, function (err, result) {
+              myJSONObject.push(result);
+              var json = JSON.parse(myJSONObject[0]['ns:getDWCalculatorByFormatResponse']['ns:return']);
+                
+              var nn = json.totalRecord;
+                       
+                for (cun = 0;cun<nn;cun++){
+                  //if(json['resultSet'][cun].IssuerSym == 'BLS'){
+                  msgDW += 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice + ' ';
+                   
+                  /*แก้ msgDW 
+                  คุณสามารถเลือก DW อ้างอิงหุ้น PTT (underlyingAssetSym) ทั้งหมดได้ที่นี่ 
+                  โดย DW ชนิด Call: ซื้อเมื่อคาดว่าราคาหุ้น Underlying จะขึ้น และ DW ชนิด Put: ซื้อเมื่อคาดว่าราคาหุ้น Underlying จะลง
+                  (* ข้อมูล ณ 30/03/2560 17.00 น. updDate + updTime)
+                  PTT01C1705A(secSym)| ชนิด Call dwType | ราคาปัจจุบัน 1.38 LstPrice บาท | ราคาเสนอซื้อเบื้องต้น 1.30 estIndicativePrice บาท | วันซื้อขายวันสุดท้าย
+                  lastTradeDate |  สถานะ DW moneyness 
+                  PTT01C1708A(secSym) | ชนิด Call dwType | ราคาปัจจุบัน 1.38 LstPrice บาท | ราคาเสนอซื้อเบื้องต้น 1.30 estIndicativePrice บาท | วันซื้อขายวันสุดท้าย
+                  lastTradeDate |  สถานะ DW moneyness                 
+                  Put DW: ซื้อเมื่อคาดว่าราคาหุ้น PTT จะลง
+                  PTT01P1705A(secSym)| ชนิด Put dwType | ราคาปัจจุบัน 1.38 LstPrice บาท | ราคาเสนอซื้อเบื้องต้น 1.30 estIndicativePrice บาท | วันซื้อขายวันสุดท้าย
+                  lastTradeDate |  สถานะ DW moneyness 
+                  PTT01P1708A(secSym) | ชนิด Put dwType |ราคาปัจจุบัน 1.38 LstPrice บาท | ราคาเสนอซื้อเบื้องต้น 1.30 estIndicativePrice บาท | วันซื้อขายวันสุดท้าย
+                  lastTradeDate |  สถานะ DW moneyness 
+
+
+                  Button 1 : PTT01C1705A (playload ="underlyingSym dwType DW" Ex: PTT Call DW)
+                  Button 2 : PTT01C1708A (playload ="underlyingSym dwType DW")
+                  Button 3 : PTT01P1705A (playload ="underlyingSym dwType DW")
+                  Button 3 : PTT01P1708A (playload ="underlyingSym dwType DW")
+
+                    
+                    
+                    */                 
+                  //}
+                   /* แก้เป็น Fb Button Template....
+                   "type":"template",
+                    "payload":{
+                    "template_type":"button",
+                    "text":"msgDW",
+                    for (cun = 0;cun<nn;cun++){
+                     "buttons":[
+                      
+                        {
+                          "type":"postback",
+                          "title":" json['resultSet'][cun].SecSym", เอา symbol DW มาใส่
+                          "payload":" underlyingSym Call DW" เพื่อ map entities ให้ใหม่
+                        },
+                       }
+                        */
+                  
+                  
+                } /*end for loop*/
+                
+                return res.json({speech: msgDW,displayText: msgDW,source: 'stock_name'}); /* แก้เป็น display เป็น Fb format*/
+            });
+          }
+
+        })
+    /*end AskDW*/
+  } else {
+    var msg = 'I cannot find your DW, please try again.';
+    return res.json({speech: msg,displayText: msg});
   }
 
 });
