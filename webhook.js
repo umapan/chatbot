@@ -63,8 +63,7 @@ function sendMessage(event) {
       method: 'POST',
       json: {
         recipient: {id: sender},
-        message: {text:aiText}
-
+        message: {text: aiText}
       }
     }, (error, response) => {
       if (error) {
@@ -100,7 +99,7 @@ app.post('/ai', (req, res) => {
     request({url: restUrl,json: true }, function (error, response, body) {
       if (!error && response.statusCode == 200 && body[0]) { 
 
-        callStockGOGL.push(body[0].substring(3));
+        callStockGOGL.push(body.substring(3));
 
         var result = JSON.parse(callStockGOGL);
 
