@@ -121,7 +121,7 @@ app.post('/ai', (req, res) => {
 
 function stock_info(stock_name){
   var myJSONObject = [];
-  var output = request('GET', 'https://www.google.com/finance/info?nfotype=infoquoteall&q=BKK:'+stock_name+'&callback=?');
+  var output = request('GET', 'https://www.google.com/finance/info?nfotype=infoquoteall&q=INDEXBKK:'+stock_name+'&callback=?');
   var hs = output.getBody('utf8').substring(3);
   var result = JSON.parse(hs);
 
