@@ -1,0 +1,29 @@
+[
+  {
+   "tokenwording": ["เปิดบัญชี","เปิดพอร์ท","เปิดพอร์ต"], 
+   "answer": [
+      {"functions":"sendQuickReply","titleArray":["ติดตามสถานะ","เปิดใหม่","อ่านวิธีเปิดบัญชี"],"randomtext":"คุณต้องการถามเรื่องใดค่ะ","payload":"OPENINGACCOUNT_SELECTING"}
+    ]
+  },{
+   "tokenwording": ["เปิดใหม่"], 
+   "answer": [
+      {"functions":"sendQuickReply","titleArray":["เปิดทางออนไลน์","สาขาหลักทรัพย์","สาขาธนาคารกรุงเทพ"],"randomtext":"ท่านสะดวกเปิดบัญชีกับเราผ่านช่องทางใดค่ะ ?","payload":"OPENINGACCOUNT_SELECTING"},
+      {"functions":"sendQuickReply","titleArray":["Cash Balance","Cash Collateral"],"randomtext":"ท่านต้องการเปิดบัญชีประเภทใด ?","payload":"ACCOUNTTYPE_SELECTING"}
+    ]
+  },{
+   "tokenwording": ["เปิดทางออนไลน์"], 
+   "answer": [
+      {"functions":"sendButton_Message","buttonType":"web_url","title":"สมัครเปิดบัญชีเลย คลิก","info":"https://goo.gl/Ii0T41","randomtext":"เปิดบัญชีออนไลน์ ส่งเอกสาร รอเทรดที่บ้านได้เลย"}
+    ]
+  },{
+   "tokenwording": ["อ่านวิธีเปิดบัญชี"], 
+   "answer": [
+      {"functions":"sendButton_Message","buttonType":"web_url","title":"อ่านวิธีสมัครเปิดบัญชี คลิก","info":"http://knowledge.bualuang.co.th/article-categories/openaccount/","randomtext":"FAQ การเปิดบัญชีหลักทรัพย์"}
+    ]
+  },{
+   "tokenwording": ["ติดตามสถานะ"], 
+   "answer": [
+      {"functions":"sendButton_Message","buttonType":["web_url","web_url"],"title":["ติดต่อเจ้าหน้าที่","ส่ง E-mail"],"info":["https://www.messenger.com/t/bualuangsec","https://www.bualuang.co.th"],"randomtext":"ติดตามเปิดบัญชีหลักทรัพย์"}
+    ]
+  }
+]

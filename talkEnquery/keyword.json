@@ -1,0 +1,14 @@
+{
+  "id": "e9c20068-0ba3-497a-a245-c4805b6a3ea1",
+  "name": "keyword",
+  "isOverridable": true,
+  "entries": [
+  	 {"value": "openingaccount","synonyms": ["เปิดบัญชี","เปิดใหม่","เปิดพอร์ท","เปิดพอร์ต","ติดตามสถานะ","อ่านวิธีเปิดบัญชี"] },
+  	 {"value": "transaction","synonyms": ["โอนเงิน","Transfer","ฝากเงิน","โอนระหว่างบัญชี","Deposit","ถอนเงิน","ธนาคารกรุงเทพ","ธนาคารกสิกรไทย","ธนาคารไทยพาณิชย์"] },
+  	 {"value": "equity","synonyms": ["Cash Balance","Cash Collateral","บัญชีหุ้น"] },
+  	 {"value": "derivatives","synonyms": ["อนุพันธ์","TFEX"] },
+  	 {"value": "common","synonyms": ["สวัสดี","หวัดดี","ดีครับ","ดีค่ะ","Hello","Hi","สาขา","ร้องเพลง","ชื่ออะไร","กิน","ทาน","กินไรยัง","ทานไรยัง","สบายดี","สัมมนา","ขอบคุณ","ขอบใจ","Thank you","Thanks","ข้อมูลหลักทรัพย์"] }
+  ],
+  "isEnum": false,
+  "automatedExpansion": true
+}

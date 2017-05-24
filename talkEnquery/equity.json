@@ -1,0 +1,12 @@
+[
+  {
+   "tokenwording": ["เปิดบัญชี","เปิดพอร์ท","เปิดพอร์ต"], 
+   "answer": [ {"functions":"sendQuickReply","titleArray":["ติดตามสถานะ","เปิดใหม่","อ่านวิธีเปิดบัญชี"],"randomtext":"คุณต้องการถามเรื่องใดค่ะ","payload":"OPENINGACCOUNT_SELECTING"} ]
+  },{
+   "tokenwording": ["สาขา"],    
+   "answer": [ {"functions":"sendButton_Message","buttonType":"web_url","title":"คลิกดูสาขาที่ใกล้","info":"https://goo.gl/OFYW6z","randomtext":"ทั่วไทยมีสาขาหลักทรัพย์บัวหลวงถึง 30 ที่เลยนะ"} ]
+  },{
+   "tokenwording": ["เปิดบัญชี","ออนไลน์"],    
+   "answer": [  {"functions":"sendButton_Message","buttonType":"web_url","title":"สมัครเปิดบัญชีเลย คลิก","info":"https://goo.gl/Ii0T41","randomtext":"เปิดบัญชีออนไลน์ ส่งเอกสาร รอเทรดที่บ้านได้เลย"}]
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "name": "dw01autopilot",
+  "version": "0.0.1",
+  "description": "Get started example for DW01 Master Chat Bot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "jshint --exclude node_modules .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fbsamples/messenger-platform-samples.git"
+  },
+  "author": "Facebook",
+  "license": "ISC",
+  "dependencies": {
+    "apiai": "^4.0.0",
+    "body-parser": "^1.16.1",
+    "common": "^0.2.5",
+    "config": "^1.25.1",
+    "crypto": "0.0.3",
+    "ejs": "^2.4.2",
+    "entity": "0.0.0",
+    "express": "^4.14.1",
+    "greeting": "^1.0.6",
+    "levenshtein-string-distance": "^1.5.0",
+    "mysql": "^2.13.0",
+    "natural": "^0.5.0",
+    "request": "^2.79.0",
+    "sync-request": "^4.0.2",
+    "word": "^0.2.4"
+  },
+  "engines": {
+    "node": "~4.1.2"
+  },
+  "bugs": {
+    "url": "https://github.com/fbsamples/messenger-platform-samples/issues"
+  },
+  "homepage": "https://github.com/fbsamples/messenger-platform-samples#readme",
+  "devDependencies": {},
+  "keywords": [
+    "dw01autopilot"
+  ]
+}

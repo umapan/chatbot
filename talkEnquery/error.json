@@ -1,0 +1,8 @@
+[
+  {
+    "answer": [
+      {"functions":"sendQuickReply","titleArray":["เปิดบัญชี","สัมมนาบัวหลวง","ราคาหลักทรัพย์","ฝากเงิน"],"randomtext":"ไม่แน่ใจว่าคุณกำลังถามเรื่องนี้หรือไม่ ?","payload":"No_Answer_TakingEnqury_QuickReply"},
+      {"functions":"sendQuickReply","titleArray":["เปิดบัญชีหุ้นออนไลน์","สัมมนาบัวหลวง","ราคาหลักทรัพย์","โอนเงิน"],"randomtext":"ขอโทษค่ะ ฉันไม่แน่ใจว่าคุณต้องการถามเรื่องนี้หรือไม่ ?","payload":"No_Answer_TakingEnqury_QuickReply"}
+   ]
+  }
+]

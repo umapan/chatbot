@@ -1,0 +1,53 @@
+[
+  {
+   "tokenwording": ["TransferMoney"], 
+   "answer": [
+      {"functions":"sendButton_Message","buttonType":["web_url","web_url"],"title":["โอนเงินผ่านStreaming","โอนเงินผ่าน Website"],"info":["https://goo.gl/MBKgXk","http://knowledge.bualuang.co.th/knowledge-base/8678/"],"randomtext":"ลูกค้าสะดวกโอนเงินระหว่างบัญชี ผ่านช่องทางใดค่ะ ?"}
+    ]
+  },{
+   "tokenwording": ["Deposit"], 
+   "answer": [
+      {"functions":"sendListTemplate","title_arry":["ธนาคารกรุงเทพ","ธนาคารกสิกรไทย","ธนาคารไทยพาณิชย์"],"image_url_arry":["https://08e5fb65.ngrok.io/image/BBL_logo.png","https://08e5fb65.ngrok.io/image/Kbank_logo.png","https://08e5fb65.ngrok.io/image/SCB_logo.png"],"subtitle_arry":["โอนเงินผ่านธนาคารกรุงเทพ","โอนเงินผ่านธนาคารกสิกรไทย","โอนเงินผ่านธนาคารไทยพาณิชย์"],"url_arry":["https://goo.gl/GA9TIz","https://goo.gl/ANoEBp","https://goo.gl/efCZIL"],"title_button":["อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด"]}
+    ]
+  },{
+   "tokenwording": ["Withdrawal"], 
+   "answer": [
+      {"functions":"sendButton_Message","buttonType":"web_url","title":"สมัครเปิดบัญชีเลย คลิก","info":"https://goo.gl/Ii0T41","randomtext":"เปิดบัญชีออนไลน์ ส่งเอกสาร รอเทรดที่บ้านได้เลย"}
+    ]
+  },{
+   "tokenwording": ["Transfer"], 
+   "answer": [
+      {"functions":"sendQuickReply","titleArray":["โอนระหว่างบัญชี","ฝากเงินเข้าบัญชี"],"randomtext":"คุณต้องการถามเรื่องใดค่ะ","payload":"MONEYTRANSFER_SELECTING"}
+    ]
+  },{
+   "tokenwording": ["BBLBank"], 
+   "answer": [
+      {"functions":"sendQuickReply","titleArray":["ข้อมูลราคา BBL","โอนเงิน ธ.กรุงเทพ"],"randomtext":"คุณต้องการถามเรื่องใดค่ะ","payload":"MONEYTRANSFER_SELECTING"}
+    ]
+  },{
+   "tokenwording": ["Kbank"], 
+   "answer": [
+      {"functions":"sendQuickReply","titleArray":["ข้อมูลราคา KBANK","โอนเงิน ธ.กสิกร"],"randomtext":"คุณต้องการถามเรื่องใดค่ะ","payload":"MONEYTRANSFER_SELECTING"}
+    ]
+  },{
+   "tokenwording": ["SCBBank"], 
+   "answer": [
+      {"functions":"sendQuickReply","titleArray":["ข้อมูลราคา SCB","โอนเงิน ธ.ไทยพาณิชย์"],"randomtext":"คุณต้องการถามเรื่องใดค่ะ","payload":"MONEYTRANSFER_SELECTING"}
+    ]
+  },{
+   "tokenwording": ["Deposit","Transfer","BBLBank"], 
+   "answer": [
+      {"functions":"sendListTemplate","title_arry":["Internet Banking","Mobile Banking","ATM","Bill Payment"],"image_url_arry":["https://08e5fb65.ngrok.io/image/BBL_logo.png","https://08e5fb65.ngrok.io/image/BBL_logo.png","https://08e5fb65.ngrok.io/image/BBL_logo.png","https://08e5fb65.ngrok.io/image/BBL_logo.png"],"subtitle_arry":["โอนหลักประกันผ่านบริการ Internet Banking","โอนหลักประกันผ่านบริการ Mobile Banking","โอนหลักประกันผ่านบริการ ATM","โอนหลักประกันผ่านบริการ Bill Payment ที่ธนาคารกรุงเทพ"],"url_arry":["https://goo.gl/1SfRn3","https://goo.gl/LnLD64","https://goo.gl/IIqOr0","https://goo.gl/mB4Y4K"],"title_button":["อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด"]}
+    ]
+  },{
+   "tokenwording": ["Deposit","Transfer","Kbank"], 
+   "answer": [
+      {"functions":"sendListTemplate","title_arry":["Internet Banking","Mobile Banking","ATM","Bill Payment"],"image_url_arry":["https://08e5fb65.ngrok.io/image/Kbank_logo.png","https://08e5fb65.ngrok.io/image/Kbank_logo.png","https://08e5fb65.ngrok.io/image/Kbank_logo.png","https://08e5fb65.ngrok.io/image/Kbank_logo.png"],"subtitle_arry":["โอนหลักประกันผ่านบริการ Internet Banking","โอนหลักประกันผ่านบริการ Mobile Banking","โอนหลักประกันผ่านบริการ ATM","โอนหลักประกันผ่านบริการ Bill Payment ที่ธนาคาร"],"url_arry":["https://goo.gl/WQuqSN","https://goo.gl/CRUFI6","https://goo.gl/IWZ6j4","https://goo.gl/mB4Y4K"],"title_button":["อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด"]}
+    ]
+  },{
+   "tokenwording": ["Deposit","Transfer","SCBBank"], 
+   "answer": [
+      {"functions":"sendListTemplate","title_arry":["Internet Banking","Mobile Banking","ATM","Bill Payment"],"image_url_arry":["https://08e5fb65.ngrok.io/image/SCB_logo.png","https://08e5fb65.ngrok.io/image/SCB_logo.png","https://08e5fb65.ngrok.io/image/SCB_logo.png","https://08e5fb65.ngrok.io/image/SCB_logo.png"],"subtitle_arry":["โอนหลักประกันผ่านบริการ Internet Banking","โอนหลักประกันผ่านบริการ Mobile Banking","โอนหลักประกันผ่านบริการ ATM","โอนหลักประกันผ่านบริการ Bill Payment ที่ธนาคาร"],"url_arry":["https://goo.gl/QAw44c","https://goo.gl/gGlM0O","https://goo.gl/mFxTF1","https://goo.gl/mB4Y4K"],"title_button":["อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด","อ่านรายละเอียด"]}
+    ]
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "id": "e9c20068-0ba3-497a-a245-c4805b6a3ea1",
+  "name": "User",
+  "isOverridable": true,
+  "entries": [
+    {"value": "สวัสดี","synonyms": ["สวัสดี","ดีค่ะ","ดีครับ","หวัดดี"]  },
+    {"value": "Hello","synonyms": ["Hello","Hi"] },
+    {"value": "ต้องการ","synonyms": ["ต้องการ"]},
+    {"value": "AskStock","synonyms": ["ข้อมูลหลักทรัพย์"]},
+    {"value": "เปิดบัญชี","synonyms": ["เปิดบัญชี","เปิดใหม่","เปิดพอร์ท","เปิดพอร์ต","ติดตามสถานะ"]},
+    {"value": "Stockinfo","synonyms": ["stock","หุ้น","SET","SET50","SET100","SETHD","MAI"]},
+    {"value": "ClosePrice","synonyms": ["ราคาปิดล่าสุด","ราคาปิดก่อนหน้า"]},
+    {"value": "PriceNow","synonyms": ["ราคาตอนนี้","ราคาปัจจุบัน","ข้อมูลราคา"]},
+    {"value": "OpenPrice","synonyms": ["ราคาเปิด","pre-open"]},
+    {"value": "HighPrice","synonyms": ["ราคาสูงสุด"]},
+    {"value": "LowPrice","synonyms": ["ราคาต่ำสุด"]},
+    {"value": "Priceinfo","synonyms": ["ราคา","Price"]},
+
+    {"value": "DWMaturityDate","synonyms": ["วันครบกำหนดอายุ","Maturity date"]},
+    {"value": "DWEXRatio","synonyms": ["อัตราการใช้สิทธิต่อหน่วย"]},
+    {"value": "DWEXPrice","synonyms": ["ราคาใช้สิทธิ"]},
+    {"value": "ChangedPrice","synonyms": ["การเปลี่ยนแปลงของราคา","ราคาเปลี่ยนแปลง","เปอร์เซ็นต์ราคาเปลี่ยนแปลง","อัตราราคาเปลี่ยนแปลง"]},
+
+    {"value": "DWInfo","synonyms": ["ราคาDW","ราคา DW","DW","DW01","DW 01"]},
+    {"value": "DWCall","synonyms": ["DW CALL","call","01 call","01call","01c","C01","DWC01","DW01C","DW01 call","DW call"]},
+    {"value": "DWPut","synonyms": ["DW PUT","put","01 put","01put","01p","P01","DWP01","DW01P","DW01 put","DW put"]},
+    
+    {"value": "DWIndPrice","synonyms": ["ราคาเสนอซื้อเบื้องต้น","estimate indicative price","indicative price"]},
+    
+    {"value": "S50DWInfo","synonyms": ["ราคาSET50 DW01","ราคาS50 DW01","ราคาSET50 DW","ราคาS50 DW","SET50 DW01","S50 DW01","SET50","S50"]},
+    {"value": "S50DWCall","synonyms": ["SET50DWCALL","SET50 DWCALL","SET50 DW CALL","SET50DW CALL","S50DWCALL","S50 DWCALL","S50 DW CALL","S50DW CALL","Set50call","S50call","Set50 call","S50 call","S50C","SET50C","S5001","S5001C","S5001CALL","S5001 CALL","SET50 01C","SET50 01 CALL","SET50DW01CALL","SET50 DW01CALL","SET50 DW01 CALL","SET50DW01 CALL","S50DW01CALL","S50 DW01CALL","S50 DW01 CALL","S50DW01 CALL"]},
+    {"value": "S50DWPut","synonyms": ["SET50DWPUT","SET50 DWPUT","SET50 DW PUT","SET50DW PUT","S50DWPUT","S50 DWPUT","S50 DW PUT","S50DW PUT","Set50PUT","S50PUT","Set50 PUT","S50 PUT","S50P","SET50P","S5001","S5001P","S5001PUT","S5001 PUT","SET50 01P","SET50 01 PUT","SET50DW01PUT","SET50 DW01PUT","SET50 DW01 PUT","SET50DW01 PUT","S50DW01PUT","S50 DW01PUT","S50 DW01 PUT","S50DW01 PUT"]},
+
+    {"value": "อยากทราบ", "synonyms": ["อยากทราบ"]},
+    {"value": "กิน", "synonyms": ["กิน"]},
+    {"value": "ทาน", "synonyms": ["ทาน"]},
+    {"value": "สบายดี", "synonyms": ["สบายดี"]},
+    {"value": "สาขา", "synonyms": ["สาขา"]},
+    {"value": "ชื่ออะไร", "synonyms": ["ชื่ออะไร"]},
+    {"value": "Thankyou", "synonyms": ["ขอบคุณ","ขอบใจ","Thank you","Thanks"]},
+
+    {"value": "Streaming", "synonyms": ["Streaming"]},
+    {"value": "Website","synonyms": ["Website"]},
+    {"value": "Withdrawal", "synonyms": ["ถอนเงิน","Withdrawal"]},
+    {"value": "TransferMoney", "synonyms": ["โอนระหว่างบัญชี"]},
+    {"value": "Transfer", "synonyms": ["โอนเงินเข้าบัญชีหุ้น","โอนเงิน","Transfer"]},
+    {"value": "Deposit", "synonyms": ["ฝากเงิน","Deposit","ฝากเงินเข้าบัญชีหลักทรัพย์"]},
+    {"value": "BBLBank", "synonyms": ["ธ.กรุงเทพ","ธนาคารกรุงเทพ","Bangkok Bank","ธนาคารสีน้ำเงิน","แบงค์กรุงเทพ","แบงก์กรุงเทพ"]},
+    {"value": "Kbank", "synonyms": ["ธ.กสิกรไทย","ธ.กสิกร","ธนาคารกสิกรไทย","ธนาคารกสิกร","Kasikorn Bank","ธนาคารสีเขียว","แบงค์กสิกร","แบงก์กสิกร"]},
+    {"value": "SCBBank", "synonyms": ["ธ.ไทยพาณิช","ธ.ไทยพาณิชย์","ธนาคารไทยพาณิชย์","ธนาคารไทยพาณิช","Siam Commercial Bank","ธนาคารสีม่วง","แบงค์ไทยพาณิช","แบงก์ไทยพาณิช"]}
+  ],
+  "isEnum": false,
+  "automatedExpansion": true
+}

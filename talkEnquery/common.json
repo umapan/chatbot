@@ -1,0 +1,79 @@
+[
+  { "tokenwording": ["AskStock"],
+    "answer": [
+      {"functions":"sendTextMessage","randomtext":"พิมพ์ชื่อหุ้นได้เลยค่ะ"}
+    ]
+  },{ "tokenwording": ["โอนเงิน"],
+    "answer": [
+      {"functions":"sendQuickReply","titleArray":["Internet Banking","ATM","Bill Payment"],"randomtext":"โอนเงินได้ผ่าน 3 ช่องทาง สะดวกช่องทางไหนค่ะ","payload":"TransferMoney_TAKINGENQURY8_QuickReply"}
+    ]
+  },{ "tokenwording": ["ราคา"],
+    "answer": [
+      {"functions":"sendQuickReply","titleArray":["ราคา DW","ราคา หุ้น"],"randomtext":"คุณอยากทราบราคาอะไรค่ะ","payload":"SECURITIES_SELECTING_TAKINGENQURY8_QuickReply"}
+    ]
+  },{
+   "tokenwording": ["สวัสดี"],    
+   "answer": [
+      {"functions":"sendTextMessage","randomtext":"หลักทรัพย์บัวหลวง สวัสดีค่ะ"},
+      {"functions":"sendTextMessage","randomtext":"สวัสดีค่ะ หลักทรัพย์บัวหลวงยินดีให้บริการค่ะ"}
+   ]
+  },{
+   "tokenwording": ["Thankyou"],    
+   "answer": [
+      {"functions":"sendTextMessage","randomtext":"ยินดีให้บริการค่ะ"}
+   ]
+  },{
+   "tokenwording": ["Hello","Hi"],    
+   "answer": [ {"functions":"sendTextMessage","randomtext":"Hello. May I help you?"} ]
+  },{
+   "tokenwording": ["สาขา"],    
+   "answer": [ {"functions":"sendButton_Message","buttonType":"web_url","title":"คลิกดูสาขาที่ใกล้","info":"https://goo.gl/OFYW6z","randomtext":"ทั่วไทยมีสาขาหลักทรัพย์บัวหลวงถึง 30 ที่เลยนะ"} ]
+  },{
+   "tokenwording": ["สาขาธนาคารกรุงเทพ"],    
+   "answer": [ {"functions":"sendButton_Message","buttonType":"web_url","title":"ค้นหาสาขาธนาคากรุงเทพที่ใกล้คุณ ที่สุด คลิก","info":"https://goo.gl/NNTBa4","randomtext":"สาขาธนาคารกรุงเทพครอบคลุมทั่วทั้งประเทศไทย 77 จังหวัด"} ]
+  },{
+   "tokenwording": ["ร้องเพลง"],    
+   "answer": [ 
+      {"functions":"sendTextMessage","randomtext":"ร้องเป็นนิดหน่อยนะ ช้างๆ น้องเคยเห็ช้างหรือเปล่า~"},
+      {"functions":"sendTextMessage","randomtext":"ร้องได้ ร้องเป็น จะให้กี่บาท"},
+      {"functions":"sendTextMessage","randomtext":"เชื่อเถอะ คุณไม่อยากฟังเสียงฉันหรอก"}  
+    ]
+  },{
+   "tokenwording": ["ชื่ออะไร"],    
+   "answer": [ 
+      {"functions":"sendTextMessage","randomtext":"ฉันชื่อ...หลักทรัพย์บัวหลวง สวัสดีอย่างเป็นทางการค่ะ"},
+      {"functions":"sendTextMessage","randomtext":"ชื่อทางการ...หลักทรัพย์บัวหลวง ชื่อเล่นๆ...บัวหลวง จ้า "} 
+    ]
+  },{
+   "tokenwording": ["กิน","ทาน","กินข้าว","ทานข้าว","กินไรยัง","ทานไรยัง"], 
+   "answer": [
+      {"functions":"sendTextMessage","randomtext":"ทานแล้วจ้า ก๋วยเตี๋ยวแห้งต้มยำ ไม่งอก ไม่ผัก ไม่ถั่ว"},
+      {"functions":"sendTextMessage","randomtext":"ทานไป 3 จาน อิ่มสุดๆ"},
+      {"functions":"sendTextMessage","randomtext":"ทานแล้ว อร่อยมากเลยล่ะ"},
+      {"functions":"sendTextMessage","randomtext":"ยังไม่หิวเลย คุณหิวแล้วเหรอ?"}
+   ]
+  },{
+   "tokenwording": ["สบายดี"],    
+   "answer": [
+      {"functions":"sendTextMessage","randomtext":"สบายกาย สบายใจเลย"},     
+      {"functions":"sendTextMessage","randomtext":"สดชื่นมากๆ เลยล่ะ"},     
+      {"functions":"sendTextMessage","randomtext":"สบายดีจ๊ะ"},     
+      {"functions":"sendTextMessage","randomtext":"วันนี้ดีสุดไปเลย"}
+   ]
+  },{
+   "tokenwording": ["อ่านวิธีเปิดบัญชี"], 
+   "answer": [
+      {"functions":"sendQuickReply","titleArray":["ติดตามสถานะ","เปิดบัญชีใหม่","อ่านวิธีเปิดบัญชี"],"randomtext":"คุณต้องการถามเรื่องใดค่ะ","payload":"OPENINGACCOUNT_SELECTING"}
+    ]
+  },{
+   "tokenwording": ["สัมมนา"], 
+   "answer": [
+      {"functions":"sendButton_Message","buttonType":"web_url","title":"คลิกดูสัมมนาบัวหลวง","info":"http://investmentstation.bualuang.co.th/#seminar","randomtext":"คุณสามารถติดตามสัมมนาของทางหลักทรัพย์ได้ทาง FB Event หรือ ที่ Website ด้านล่างค่ะ"}
+    ]
+  },{
+   "tokenwording": ["ฝากเงิน"], 
+   "answer": [
+      {"functions":"sendButton_Message","buttonType":"web_url","title":"คลิกอ่านวิธีฝากเงินเข้าบัญชีหลักทรัพย์","info":"http://knowledge.bualuang.co.th/article-categories/deposit/","randomtext":"อ่านวิธีฝากเงินง่ายผ่าน 3 วิธี"}
+    ]
+  }
+]
